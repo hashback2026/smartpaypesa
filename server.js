@@ -22,7 +22,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 async function sendSTK(number, amount) {
     try {
         const response = await axios.post(
-            "https://api.smartpaypesa.com/v1/initiatestk",
+            "https://api.smartpaypesa.com/api/v1/initiatestk",
             {
                 api_key: process.env.API_KEY,
                 amount: amount,
