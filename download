@@ -1,0 +1,4 @@
+API_KEY=your_smartpaypesa_api_key
+RATE=5
+INTERVAL=10000
+PORT=3000
