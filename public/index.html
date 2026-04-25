@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bulk STK Push</title>
+</head>
+<body>
+
+<h2>Bulk STK Push</h2>
+
+<textarea id="numbers" rows="10" cols="40" placeholder="Enter numbers separated by commas"></textarea>
+<br><br>
+
+<input type="number" id="amount" placeholder="Amount">
+<br><br>
+
+<button onclick="sendSTK()">Send STK Push</button>
+
+<pre id="result"></pre>
+
+<script>
+async function sendSTK() {
+    const numbers = document.getElementById("numbers").value
+        .split(",")
+        .map(n => n.trim());
+
+    const amount = document.getElementById("amount").value;
+
+    const res = await fetch("/send-bulk", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ numbers, amount })
+    });
+
+    const data = await res.json();
+    document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>
